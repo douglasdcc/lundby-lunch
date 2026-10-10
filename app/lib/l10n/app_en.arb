@@ -1,0 +1,48 @@
+{
+  "@@locale": "en",
+  "appTitle": "Lundby Lunch",
+  "navToday": "Today",
+  "navWeek": "Week",
+  "navSettings": "Settings",
+  "weekNumber": "Week {week}",
+  "@weekNumber": {
+    "placeholders": { "week": { "type": "int" } }
+  },
+  "allWeek": "All week",
+  "noMenuForDay": "No menu for this day.",
+  "menuMissing": "This week's menu isn't published yet.",
+  "menuError": "Couldn't read this restaurant's menu.",
+  "openWebsite": "Open website",
+  "staleWeek": "Showing week {shown}. The menus for week {target} aren't published yet.",
+  "@staleWeek": {
+    "placeholders": {
+      "shown": { "type": "int" },
+      "target": { "type": "int" }
+    }
+  },
+  "loadErrorTitle": "Couldn't load the menus",
+  "loadErrorMessage": "Check your connection and try again.",
+  "retry": "Try again",
+  "refreshFailed": "Couldn't update. Showing saved menus.",
+  "lastUpdated": "Updated {time}",
+  "@lastUpdated": {
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "price": "{price} kr",
+  "@price": {
+    "placeholders": { "price": { "type": "int" } }
+  },
+  "allRestaurantsHidden": "All restaurants are hidden. Turn them on in Settings.",
+  "settingsLanguage": "Language",
+  "settingsTheme": "Theme",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsStartScreen": "Start screen",
+  "settingsRestaurants": "Restaurants",
+  "settingsRestaurantsHint": "Drag to reorder. Turn off to hide.",
+  "settingsRestaurantsEmpty": "Restaurants appear here once the menus have loaded.",
+  "settingsAbout": "About",
+  "aboutText": "Menus are collected once a week from the restaurants' websites. Dishes and prices can change, so check with the restaurant.",
+  "sampleDataNotice": "This build shows sample data."
+}

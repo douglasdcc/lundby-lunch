@@ -1,0 +1,7 @@
+.dart_tool/
+build/
+coverage/
+.idea/
+*.iml
+.DS_Store
+CLAUDE.local.md
