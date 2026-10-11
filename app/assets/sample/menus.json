@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 1,
+  "isoYear": 2026,
+  "isoWeek": 41,
+  "generatedAt": "2026-10-05T06:00:00.000Z",
+  "restaurants": [
+    {
+      "id": "roots",
+      "name": "Roots",
+      "website": {
+        "sv": "https://www.rootsfoodmarket.se/",
+        "en": "https://www.rootsfoodmarket.se/?lang=en"
+      },
+      "status": "ok",
+      "lunchHours": "11:00–13:30",
+      "fetchedAt": "2026-10-05T06:00:00.000Z",
+      "days": [
+        {
+          "date": "2026-10-05",
+          "dishes": [
+            {
+              "name": {
+                "en": "Mushroom risotto with crispy fried cabbage, grated cheese, poached egg & cress"
+              },
+              "category": {
+                "sv": "Vegetariskt",
+                "en": "Vegetarian"
+              }
+            },
+            {
+              "name": {
+                "en": "Brown butter-baked catch of the day with potato purée, shellfish cream sauce, shaved vegetables & crispy potatoes"
+              },
+              "category": {
+                "sv": "Fisk",
+                "en": "Fish"
+              }
+            },
+            {
+              "name": {
+                "en": "Pan-fried chicken thigh fillet, herb-roasted potatoes, roasted chicken jus & marinated vegetables"
+              },
+              "category": {
+                "sv": "Kött",
+                "en": "Meat"
+              }
+            },
+            {
+              "name": {
+                "en": "Creamy pesto pasta with crispy bacon, roasted garlic, Grana Padano, onion & spinach"
+              },
+              "category": {
+                "sv": "Street food",
+                "en": "Street Food"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-06",
+          "dishes": [
+            {
+              "name": {
+                "en": "Tofu yakiniku with noodles, cabbage salad & sesame seeds"
+              },
+              "category": {
+                "sv": "Vegetariskt",
+                "en": "Vegetarian"
+              }
+            },
+            {
+              "name": {
+                "en": "Cream cheese-baked catch of the day, lemon sauce, boiled potatoes & roasted pointed cabbage"
+              },
+              "category": {
+                "sv": "Fisk",
+                "en": "Fish"
+              }
+            },
+            {
+              "name": {
+                "en": "Tuesday Schnitzel at Roots! Served with roasted potatoes, whipped black pepper & parsley butter, lemon & tangy jus"
+              },
+              "category": {
+                "sv": "Kött",
+                "en": "Meat"
+              }
+            },
+            {
+              "name": {
+                "en": "Yakiniku-style stew with sliced beef chuck, noodles, cabbage salad & sesame seeds"
+              },
+              "category": {
+                "sv": "Street food",
+                "en": "Street Food"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "dishes": [
+            {
+              "name": {
+                "en": "Vegetarian curry with cauliflower, sweet potato & mung beans, served with yoghurt, rice & spring onion salad"
+              },
+              "category": {
+                "sv": "Vegetariskt",
+                "en": "Vegetarian"
+              }
+            },
+            {
+              "name": {
+                "en": "Spice-baked salmon with potato wedges, harissa tomato sauce, tomato, onion & zucchini ragout, and parsley"
+              },
+              "category": {
+                "sv": "Fisk",
+                "en": "Fish"
+              }
+            },
+            {
+              "name": {
+                "en": "Veal Wallenbergare with potato purée, green peas, lingonberries & brown butter"
+              },
+              "category": {
+                "sv": "Kött",
+                "en": "Meat"
+              }
+            },
+            {
+              "name": {
+                "en": "Tandoori-baked chicken drumsticks, mint & garlic yoghurt, rice & spring onion salad"
+              },
+              "category": {
+                "sv": "Street food",
+                "en": "Street Food"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "dishes": [
+            {
+              "name": {
+                "en": "Breaded feta cheese, lightly roasted potatoes, Shopska salad & mustard vinaigrette"
+              },
+              "category": {
+                "sv": "Vegetariskt",
+                "en": "Vegetarian"
+              }
+            },
+            {
+              "name": {
+                "en": "Tom Yum Goong with tiger prawns, squid, jasmine rice, coriander, lime & sugar snap peas"
+              },
+              "category": {
+                "sv": "Fisk",
+                "en": "Fish"
+              }
+            },
+            {
+              "name": {
+                "en": "Roast beef, whipped horseradish cream, marinated Brussels sprouts, pepper jus & parsley-tossed potatoes"
+              },
+              "category": {
+                "sv": "Kött",
+                "en": "Meat"
+              }
+            },
+            {
+              "name": {
+                "en": "Roots' pea soup with sausage & pork, freshly baked pancakes with homemade jam & whipped cream"
+              },
+              "category": {
+                "sv": "Street food",
+                "en": "Street Food"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "dishes": [
+            {
+              "name": {
+                "en": "Korean-spiced jackfruit burger with sesame cucumber, pickled onion, cabbage slaw & fries"
+              },
+              "category": {
+                "sv": "Vegetariskt",
+                "en": "Vegetarian"
+              }
+            },
+            {
+              "name": {
+                "en": "Roots fish & seafood stew with root vegetables, saffron aioli & garlic toast"
+              },
+              "category": {
+                "sv": "Fisk",
+                "en": "Fish"
+              }
+            }
+          ]
+        }
+      ],
+      "weekly": []
+    },
+    {
+      "id": "zata",
+      "name": "Z:äta",
+      "website": {
+        "sv": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/zata/"
+      },
+      "status": "error",
+      "days": [],
+      "weekly": []
+    },
+    {
+      "id": "spira",
+      "name": "Spira",
+      "website": {
+        "sv": "https://spirafood.se/volvo-lunchmeny"
+      },
+      "status": "ok",
+      "address": "Gropegårdsgatan 10",
+      "fetchedAt": "2026-10-05T06:00:00.000Z",
+      "days": [
+        {
+          "date": "2026-10-05",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Kyckling katsu – pankostekt kyckling, krämig kålsallad, lime, sesam, ångat ris samt rostad broccoli",
+                "en": "Chicken katsu – panko fried chicken, creamy cabbage salad, lime, sesame, steamed rice and roasted broccoli"
+              }
+            },
+            {
+              "name": {
+                "sv": "Ugnsbakad laxforell med hollandaisesås, rostade blomgrönsaker, kokt potatis samt dillsallad",
+                "en": "Oven baked rainbow trout, sauce hollandaise, roasted veggies, boiled potatoes and dill salad"
+              }
+            },
+            {
+              "name": {
+                "sv": "Krämig svamppasta serveras med örtbakade bönor, lagrad ost, rostade solrosfrön samt grönkålstopping",
+                "en": "Creamy mushroom pasta served with herb-baked beans, aged cheese, roasted sunflower seeds and kale topping"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-06",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Pannbiff, krämig svampsås, stekt potatis med karamelliserad lök samt rostade morötter",
+                "en": "Salisbury steak, creamy mushroom sauce, fried potatoes with caramelized onions and roasted carrots"
+              }
+            },
+            {
+              "name": {
+                "sv": "Fiskbiffar med Sandefjordsås, gröna ärtor, rostad savojkål samt kokt potatis",
+                "en": "Fish patties with Sandefjord sauce, green peas, roasted savoy cabbage and boiled potatoes"
+              }
+            },
+            {
+              "name": {
+                "sv": "Jamaikansk bön- och sötpotatisgryta serveras med kokosris, het mangosås, yoghurt samt koriander",
+                "en": "Jamaican bean and sweet potato stew served with coconut rice, hot mango sauce, yoghurt and coriander"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Wokad biff – krispiga grönsaker, ångat ris, lime- och ingefärscreme samt koriander",
+                "en": "Stir fried beef – crispy veggies, steamed rice, lime and ginger cream and fresh coriander"
+              }
+            },
+            {
+              "name": {
+                "sv": "Pankopanerad spätta med röd currycreme, chilirostad broccoli, ångat jasminris och koriander",
+                "en": "Panko fried plaice with red curry flavoured cream, chili roasted broccoli, jasmine rice and coriander"
+              }
+            },
+            {
+              "name": {
+                "sv": "Honungsrostad chevré serveras med rödbetshummus, rostade rötter, spenat, pumpafrö samt brynt smör",
+                "en": "Honey roasted chèvre served with beetroot hummus, roasted roots, spinach, pumpkin seeds and browned butter"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Ärtsoppa med fläsk eller gulaschsoppa med gräddfil samt nygräddade pannkakor, sylt och grädde",
+                "en": "Yellow pea soup with salted pork or goulash soup with sour cream – pancakes with whipped cream and jam"
+              }
+            },
+            {
+              "name": {
+                "sv": "Mustig kycklinggryta med rödvin, svamp och bacon samt potatismos och saltgurka",
+                "en": "Chicken stew with red wine, mushrooms and bacon – mashed potatoes and brined cucumber"
+              }
+            },
+            {
+              "name": {
+                "sv": "Mandelbakad torsk med rostad blomkål, potatis samt ägg, kapris och dillmajjo",
+                "en": "Almond baked cod with roasted cauliflower, potato – egg, capers and dill mayo"
+              }
+            },
+            {
+              "name": {
+                "sv": "Yam tofu – krispig tofu serveras med ångat ris, het limedressing, krispiga grönsaker, chili samt thailändsk örtsallad",
+                "en": "Yam tofu – crispy tofu served with steamed rice, hot lime dressing, crispy vegetables, chili and Thai herb salad"
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Gyros med friterad klyftpotatis, fetaostcreme, pitabröd samt tomat-, lök- och olivsallad",
+                "en": "Gyros with deep fried wedge potatoes, feta cheese cream, pita bread, tomato-onion-olive salad"
+              }
+            },
+            {
+              "name": {
+                "sv": "Sydfransk gryta – bouillabaisse, torsk, rostad paprika-aioli, kokt potatis samt julienne grönsaker",
+                "en": "Bouillabaisse, French Mediterranean stew, roasted pepper aioli, potatoes and julienne veggies"
+              }
+            },
+            {
+              "name": {
+                "sv": "Vegetarisk kebab serveras med vitlökssås, rostad potatis, syrad rödkålssallad samt persilja",
+                "en": "Vegetarian kebab served with garlic sauce, roasted potatoes, pickled red cabbage salad and parsley"
+              }
+            }
+          ]
+        }
+      ],
+      "weekly": []
+    },
+    {
+      "id": "barcentro",
+      "name": "Bar Centro",
+      "website": {
+        "sv": "https://barcentropavolvo.se/",
+        "en": "https://barcentropavolvo.se/en"
+      },
+      "status": "ok",
+      "address": "Prästvägen 12",
+      "lunchHours": "11:00–13:15",
+      "fetchedAt": "2026-10-05T06:00:00.000Z",
+      "days": [
+        {
+          "date": "2026-10-05",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Dagens fisk med brynt citronsmör, potatisstomp, dill- och rädissallad",
+                "en": "Fish of the day with browned lemon butter, crushed potatoes, dill and radish salad"
+              },
+              "price": 115
+            },
+            {
+              "name": {
+                "sv": "Stekt ägg och rostad spetskål med brynt citronsmör, potatisstomp, dill- och rädissallad",
+                "en": "Fried egg and roasted pointed cabbage with browned lemon butter, crushed potatoes, dill and radish salad"
+              },
+              "category": {
+                "sv": "Dagens vegetariska",
+                "en": "Daily vegetarian"
+              },
+              "price": 115
+            }
+          ]
+        },
+        {
+          "date": "2026-10-06",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Chicken tikka masala med basmatiris, mango chutney och koriander",
+                "en": "Chicken tikka masala with basmati rice, mango chutney and coriander"
+              },
+              "price": 115,
+              "tags": [
+                "L"
+              ]
+            },
+            {
+              "name": {
+                "sv": "Tofu tikka masala med basmatiris, mango chutney och koriander",
+                "en": "Tofu tikka masala with basmati rice, mango chutney and coriander"
+              },
+              "category": {
+                "sv": "Dagens vegetariska",
+                "en": "Daily vegetarian"
+              },
+              "price": 115,
+              "tags": [
+                "L"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Ćevapčići med vitlöksrostad potatis, rostad paprikadressing, syrlig lök- och persiljesallad",
+                "en": "Ćevapčići with garlic-roasted potatoes, roasted pepper dressing, onion and parsley salad"
+              },
+              "price": 115
+            },
+            {
+              "name": {
+                "sv": "Anammabiff med vitlöksrostad potatis, rostad paprikadressing, syrlig lök- och persiljesallad",
+                "en": "Anamma patty with garlic-roasted potatoes, roasted pepper dressing, onion and parsley salad"
+              },
+              "category": {
+                "sv": "Dagens vegetariska",
+                "en": "Daily vegetarian"
+              },
+              "price": 115
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Hoisinbakad karré med basmatiris, sojamarinerad rödkål, ingefärspicklad gurka och rostade sesamfrön",
+                "en": "Hoisin-baked pork shoulder with basmati rice, soy-marinated red cabbage, ginger-pickled cucumber and toasted sesame seeds"
+              },
+              "price": 115
+            },
+            {
+              "name": {
+                "sv": "Hoisinbakad jackfruit med basmatiris, sojamarinerad rödkål, ingefärspicklad gurka och rostade sesamfrön",
+                "en": "Hoisin-baked jackfruit with basmati rice, soy-marinated red cabbage, ginger-pickled cucumber and toasted sesame seeds"
+              },
+              "category": {
+                "sv": "Dagens vegetariska",
+                "en": "Daily vegetarian"
+              },
+              "price": 115
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Kalv tri-tip med patatas bravas, sotad citron, chimichurri och spenat inkl. fredagskaka",
+                "en": "Veal tri-tip with patatas bravas, charred lemon, chimichurri and spinach, including Friday cake"
+              },
+              "price": 115
+            },
+            {
+              "name": {
+                "sv": "Halloumi med patatas bravas, sotad citron, chimichurri och spenat inkl. fredagskaka",
+                "en": "Halloumi with patatas bravas, charred lemon, chimichurri and spinach, including Friday cake"
+              },
+              "category": {
+                "sv": "Dagens vegetariska",
+                "en": "Daily vegetarian"
+              },
+              "price": 115,
+              "tags": [
+                "L"
+              ]
+            }
+          ]
+        }
+      ],
+      "weekly": [
+        {
+          "name": {
+            "sv": "Pasta med tomatsås, citronvispad ricotta och basilika",
+            "en": "Pasta with tomato sauce, lemon-whipped ricotta and basil"
+          },
+          "category": {
+            "sv": "Veckans pasta",
+            "en": "Pasta of the week"
+          },
+          "price": 115
+        },
+        {
+          "name": {
+            "sv": "Risnudelsallad med rostbiff, gurka, morot, bladsallat, böngroddar, rostade sesamfrön och wasabimajonnäs",
+            "en": "Rice noodle salad with roast beef, cucumber, carrot, mixed greens, bean sprouts, toasted sesame seeds and wasabi mayonnaise"
+          },
+          "category": {
+            "sv": "Veckans sallad",
+            "en": "Salad of the week"
+          },
+          "price": 110
+        },
+        {
+          "name": {
+            "sv": "Potatis- och purjolökssoppa med krutonger",
+            "en": "Potato and leek soup with croutons"
+          },
+          "category": {
+            "sv": "Veckans soppa",
+            "en": "Soup of the week"
+          },
+          "price": 100,
+          "tags": [
+            "G",
+            "L"
+          ]
+        },
+        {
+          "name": {
+            "sv": "Chevré- och grönkålspaj med timjan, ruccola och örtcremé",
+            "en": "Goat cheese and kale pie with thyme, rocket and herb crème"
+          },
+          "category": {
+            "sv": "Veckans paj",
+            "en": "Pie of the week"
+          },
+          "price": 105,
+          "tags": [
+            "L",
+            "G"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nordic-taste-lab",
+      "name": "Nordic Taste Lab",
+      "website": {
+        "en": "https://www.compass-group.se/en/Restaurants-and-menus/ovriga-restauranger/Restaurant-Nordic-Taste-Lab/"
+      },
+      "status": "missing",
+      "days": [],
+      "weekly": []
+    }
+  ]
+}
