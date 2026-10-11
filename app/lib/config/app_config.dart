@@ -3,10 +3,7 @@ import 'package:flutter/foundation.dart';
 /// Build-time configuration, set with `--dart-define`.
 abstract final class AppConfig {
   /// Shows the bundled sample menus instead of downloading `menus.json`.
-  static const useSampleData = bool.fromEnvironment(
-    'SAMPLE_DATA',
-    defaultValue: true,
-  );
+  static const useSampleData = bool.fromEnvironment('SAMPLE_DATA');
 
   static const _menusUrl = String.fromEnvironment('MENUS_URL');
 

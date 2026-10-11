@@ -1,0 +1,95 @@
+name: Scrape menus and deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Times are UTC; GitHub may start scheduled runs a little late.
+    - cron: '0 17 * * 0'        # Sunday evening: next week's menus
+    - cron: '0 5,7,9,11 * * 1'  # Monday morning, until every menu is in
+    - cron: '0 7 * * 2-5'       # Tuesday to Friday: late or updated menus
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SITE_URL: https://douglasdcc.github.io/lundby-lunch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.compare.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.7
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Download the published menus
+        run: |
+          curl --fail --silent --show-error --location \
+            "$SITE_URL/data/menus.json" --output previous.json \
+            || { echo "No published menus yet"; rm -f previous.json; }
+
+      - name: Scrape
+        working-directory: scraper
+        run: dart run bin/scrape.dart --previous ../previous.json --output ../menus.json
+
+      - name: Compare with the published menus
+        id: compare
+        run: |
+          if [ -f previous.json ] && \
+             [ "$(jq -S 'del(.generatedAt)' previous.json)" = "$(jq -S 'del(.generatedAt)' menus.json)" ]; then
+            echo "Menus unchanged"
+            # Keep the published file so its "updated" time stays the last real change.
+            cp previous.json menus.json
+            changed=false
+          else
+            changed=true
+          fi
+          # Pushes always deploy (the app may have changed); schedules only on new menus.
+          if [ "$changed" = true ] || [ "${{ github.event_name }}" != schedule ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build the web app
+        if: steps.compare.outputs.deploy == 'true'
+        working-directory: app
+        run: flutter build web --release --base-href /lundby-lunch/ --dart-define=SAMPLE_DATA=false
+
+      - name: Add the menus to the site
+        if: steps.compare.outputs.deploy == 'true'
+        run: |
+          mkdir -p app/build/web/data
+          cp menus.json app/build/web/data/menus.json
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.compare.outputs.deploy == 'true'
+        with:
+          path: app/build/web
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

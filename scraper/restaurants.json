@@ -1,0 +1,68 @@
+[
+  {
+    "id": "roots",
+    "name": "Roots",
+    "website": {
+      "sv": "https://www.rootsfoodmarket.se/",
+      "en": "https://www.rootsfoodmarket.se/?lang=en"
+    },
+    "lunchHours": "11:00–13:30",
+    "source": {
+      "type": "roots",
+      "sv": "https://www.rootsfoodmarket.se/",
+      "en": "https://www.rootsfoodmarket.se/?lang=en"
+    }
+  },
+  {
+    "id": "zata",
+    "name": "Z:äta",
+    "website": {
+      "sv": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/zata/"
+    },
+    "address": "Gropegårdsgatan 11",
+    "source": {
+      "type": "mashie",
+      "url": "https://compass.mashie.matildaplatform.com/public/app/restaurang+z%C3%A4ta/c2b83349?country=se"
+    }
+  },
+  {
+    "id": "spira",
+    "name": "Spira",
+    "website": {
+      "sv": "https://spirafood.se/volvo-lunchmeny"
+    },
+    "address": "Gropegårdsgatan 10",
+    "lunchHours": "11:00–13:00",
+    "source": {
+      "type": "spira",
+      "url": "https://spirafood.se/volvo-lunchmeny"
+    }
+  },
+  {
+    "id": "barcentro",
+    "name": "Bar Centro",
+    "website": {
+      "sv": "https://barcentropavolvo.se/",
+      "en": "https://barcentropavolvo.se/en"
+    },
+    "address": "Prästvägen 12",
+    "lunchHours": "11:00–13:15",
+    "source": {
+      "type": "barcentro",
+      "sv": "https://barcentropavolvo.se/",
+      "en": "https://barcentropavolvo.se/en"
+    }
+  },
+  {
+    "id": "nordic-taste-lab",
+    "name": "Nordic Taste Lab",
+    "website": {
+      "en": "https://www.compass-group.se/en/Restaurants-and-menus/ovriga-restauranger/Restaurant-Nordic-Taste-Lab/"
+    },
+    "address": "Prästvägen 15",
+    "source": {
+      "type": "compass",
+      "costCenter": "8303999"
+    }
+  }
+]
