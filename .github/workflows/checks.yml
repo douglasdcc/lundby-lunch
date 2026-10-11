@@ -1,0 +1,39 @@
+name: Checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.7
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - name: lunch_core
+        working-directory: packages/lunch_core
+        run: |
+          dart analyze --fatal-infos
+          dart test
+
+      - name: scraper
+        working-directory: scraper
+        run: |
+          dart analyze --fatal-infos
+          dart test
+
+      - name: app
+        working-directory: app
+        run: |
+          flutter analyze
+          flutter test

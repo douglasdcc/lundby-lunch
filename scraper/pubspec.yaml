@@ -1,0 +1,16 @@
+name: lunch_scraper
+description: Scrapes the Lundby restaurants' lunch menus into menus.json.
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  html: ^0.15.7
+  http: ^1.6.0
+  lunch_core:
+    path: ../packages/lunch_core
+dev_dependencies:
+  lints: ^6.1.0
+  test: ^1.31.1

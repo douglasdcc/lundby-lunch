@@ -7,3 +7,4 @@ environment:
 workspace:
   - app
   - packages/lunch_core
+  - scraper
