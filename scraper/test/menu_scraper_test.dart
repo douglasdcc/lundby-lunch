@@ -138,21 +138,51 @@ void main() {
       );
     }
 
-    test('keeps a complete restaurant without scraping it', () async {
-      final config = _config('a', _scraped(42), name: 'New name');
+    test('scrapes a complete restaurant again and uses the new menu', () async {
+      final config = _config('a', _scraped(42));
 
       final restaurant = _only(
         await _run([config], previous: await previousWith(MenuStatus.ok)),
       );
 
-      expect((config.parser as _FakeParser).calls, 0);
-      expect(restaurant.status, MenuStatus.ok);
-      expect(restaurant.days.single.dishes.single.name.sv, 'Sparad rätt');
-      expect(restaurant.fetchedAt, DateTime.utc(2026, 10, 12, 5));
-      // Names and links always come from the current config.
-      expect(restaurant.name, 'New name');
-      expect(restaurant.website.sv, 'https://a.example');
+      expect((config.parser as _FakeParser).calls, 1);
+      expect(restaurant.days.first.dishes.single.name.sv, 'Måndagsrätt');
+      expect(restaurant.fetchedAt, _monday.toUtc());
     });
+
+    test('keeps when it was fetched if the menu is unchanged', () async {
+      final first = await _run([_config('a', _scraped(42))]);
+
+      final restaurant = _only(
+        await _run(
+          [_config('a', _scraped(42))],
+          previous: first,
+          now: _monday.add(const Duration(hours: 2)),
+        ),
+      );
+
+      expect(restaurant.fetchedAt, _monday.toUtc());
+    });
+
+    for (final (outcome, result) in [
+      ('missing', _scraped(41)),
+      ('failing', const FetchException('HTTP 500')),
+    ]) {
+      test('keeps a complete menu when the new scrape is $outcome', () async {
+        final config = _config('a', result, name: 'New name');
+
+        final restaurant = _only(
+          await _run([config], previous: await previousWith(MenuStatus.ok)),
+        );
+
+        expect(restaurant.status, MenuStatus.ok);
+        expect(restaurant.days.single.dishes.single.name.sv, 'Sparad rätt');
+        expect(restaurant.fetchedAt, DateTime.utc(2026, 10, 12, 5));
+        // Names and links always come from the current config.
+        expect(restaurant.name, 'New name');
+        expect(restaurant.website.sv, 'https://a.example');
+      });
+    }
 
     test('scrapes again a restaurant that was missing', () async {
       final config = _config('a', _scraped(42));
