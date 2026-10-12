@@ -4,10 +4,14 @@ on:
   push:
     branches: [main]
   schedule:
-    # Times are UTC; GitHub may start scheduled runs a little late.
-    - cron: '0 17 * * 0'        # Sunday evening: next week's menus
-    - cron: '0 5,7,9,11 * * 1'  # Monday morning, until every menu is in
-    - cron: '0 7 * * 2-5'       # Tuesday to Friday: late or updated menus
+    # Times are UTC (Sweden is UTC+2 in summer, UTC+1 in winter). GitHub can
+    # start scheduled runs hours late or skip them, worst at the top of the
+    # hour, so runs use odd minutes and repeat often where timing matters.
+    # Runs without menu changes don't deploy.
+    - cron: '37 15,19 * * 0'        # Sunday: next week's menus
+    - cron: '7,27,47 4-8 * * 1'     # Monday 06:07-10:47 summer / 05:07-09:47 winter: ready before 10:00
+    - cron: '17 10,12 * * 1'        # Monday: late menus
+    - cron: '17 5,7 * * 2-5'        # Tuesday to Friday: late or updated menus
   workflow_dispatch:
 
 permissions:

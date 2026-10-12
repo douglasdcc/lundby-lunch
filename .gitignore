@@ -5,3 +5,4 @@ coverage/
 *.iml
 .DS_Store
 CLAUDE.local.md
+.widget_preview/
