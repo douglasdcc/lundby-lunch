@@ -76,6 +76,39 @@ void main() {
     });
   });
 
+  group('Spira with all days in one heading', () {
+    final menu = parseSpiraPage('''
+      <h3>Lunchmeny vecka 42</h3>
+      <h6><strong>Måndag</strong><br>Köttbullar med potatismos och gräddsås<br>
+      Meatballs with mashed potatoes and cream<br>gravy<br>
+      <strong>Tisdag</strong><br>Burrito med nötfärs, ris samt mexikansk<br>
+      majssallad<br>Beef burrito with rice and Mexican corn<br>salad<br>
+      Örtbakad torsk med potatis<br>Herb-baked cod with potatoes</h6>
+    ''');
+
+    test('splits the heading at each weekday name', () {
+      expect(menu.week, 42);
+      expect([for (final day in menu.days) day.weekday], [1, 2]);
+      expect([for (final day in menu.days) day.dishes.length], [1, 2]);
+    });
+
+    test('joins dish names that wrap onto a new line', () {
+      expect(_names(menu.dishesOn(1)), [
+        (
+          'Köttbullar med potatismos och gräddsås',
+          'Meatballs with mashed potatoes and cream gravy',
+        ),
+      ]);
+      expect(_names(menu.dishesOn(2)), [
+        (
+          'Burrito med nötfärs, ris samt mexikansk majssallad',
+          'Beef burrito with rice and Mexican corn salad',
+        ),
+        ('Örtbakad torsk med potatis', 'Herb-baked cod with potatoes'),
+      ]);
+    });
+  });
+
   group('Bar Centro', () {
     final menu = mergeLanguages(
       sv: parseBarCentroPage(fixture('barcentro_sv.html'), Language.sv),
@@ -135,17 +168,23 @@ void main() {
   group('Mashie', () {
     final page = fixture('mashie_zata.html');
 
-    test('reads the requested week, pairing each dish with its translation', () {
-      final menu = parseMashiePage(page, 41);
+    test(
+      'reads the requested week, pairing each dish with its translation',
+      () {
+        final menu = parseMashiePage(page, 41);
 
-      expect(menu.week, 41);
-      expect([for (final day in menu.days) day.weekday], [1, 2, 3, 4, 5]);
-      final monday = menu.dishesOn(1);
-      expect(monday.first.category?.toJson(), {'sv': 'Vego', 'en': 'Vego'});
-      expect(monday.first.name.sv, startsWith('Rostad pumpa med bönragu'));
-      expect(monday.first.name.en, startsWith('Roasted pumpkin with bean mix'));
-      expect(monday[1].category?.toJson(), {'sv': 'Fisk', 'en': 'Fish'});
-    });
+        expect(menu.week, 41);
+        expect([for (final day in menu.days) day.weekday], [1, 2, 3, 4, 5]);
+        final monday = menu.dishesOn(1);
+        expect(monday.first.category?.toJson(), {'sv': 'Vego', 'en': 'Vego'});
+        expect(monday.first.name.sv, startsWith('Rostad pumpa med bönragu'));
+        expect(
+          monday.first.name.en,
+          startsWith('Roasted pumpkin with bean mix'),
+        );
+        expect(monday[1].category?.toJson(), {'sv': 'Fisk', 'en': 'Fish'});
+      },
+    );
 
     test('skips alternatives without a dish', () {
       final monday = parseMashiePage(page, 41).dishesOn(1);
