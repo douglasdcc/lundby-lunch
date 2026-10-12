@@ -6,8 +6,9 @@ import '../scraped_menu.dart';
 import '../text.dart';
 import 'menu_parser.dart';
 
-/// Spira: one heading per day, with Swedish and English lines mixed in the
-/// same block. Each line's language is guessed from its words.
+/// Spira: a weekday name followed by its dishes, with Swedish and English
+/// lines mixed together. Days come one per heading or several in the same
+/// heading. Each line's language is guessed from its words.
 class SpiraParser implements MenuParser {
   SpiraParser(this.url);
 
@@ -25,17 +26,46 @@ ScrapedMenu parseSpiraPage(String page) {
   for (final element in document.querySelectorAll(
     'h1, h2, h3, h4, h5, h6, p',
   )) {
-    final lines = textLines(element);
-    if (lines.length < 2) continue;
-    final weekday = weekdayFromName(lines.first);
-    if (weekday == null || weekday > 5) continue;
-    days.add(ScrapedDay(weekday, _pairLanguages(lines.skip(1).toList())));
+    int? weekday;
+    var dishLines = <String>[];
+
+    void addDay() {
+      if (weekday != null && weekday <= 5 && dishLines.isNotEmpty) {
+        days.add(ScrapedDay(weekday, _pairLanguages(_joinWrapped(dishLines))));
+      }
+    }
+
+    for (final line in textLines(element)) {
+      final name = weekdayFromName(line);
+      if (name != null) {
+        addDay();
+        weekday = name;
+        dishLines = [];
+      } else if (weekday != null) {
+        dishLines.add(line);
+      }
+    }
+    addDay();
   }
 
   return ScrapedMenu(
     week: findWeekNumber(textLines(document).join('\n')),
     days: days,
   );
+}
+
+/// Joins a line that starts in lowercase onto the line before it, since
+/// it is the rest of a dish name that wrapped.
+List<String> _joinWrapped(List<String> lines) {
+  final joined = <String>[];
+  for (final line in lines) {
+    if (joined.isNotEmpty && line.startsWith(RegExp('[a-zåäö]'))) {
+      joined.last = '${joined.last} $line';
+    } else {
+      joined.add(line);
+    }
+  }
+  return joined;
 }
 
 /// Sorts lines into Swedish and English, then pairs them in order. A line
