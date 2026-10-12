@@ -7,8 +7,8 @@ const _usage = '''
 Usage: dart run bin/scrape.dart --output <file> [--previous <file>] [--config <file>]
 
   --output    Where to write the new menus.json.
-  --previous  The currently published menus.json. Restaurants already
-              complete for the week are kept instead of scraped again.
+  --previous  The currently published menus.json. A restaurant's menu for
+              the week is kept when scraping it again fails or finds none.
   --config    Restaurant list (default: restaurants.json).''';
 
 Future<void> main(List<String> args) async {
