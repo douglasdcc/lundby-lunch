@@ -61,8 +61,7 @@
     },
     "address": "Prästvägen 15",
     "source": {
-      "type": "compass",
-      "costCenter": "8303999"
+      "type": "image"
     }
   }
 ]

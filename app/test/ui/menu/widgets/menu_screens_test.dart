@@ -51,6 +51,30 @@ void main() {
       expect(find.text('Open website'), findsWidgets);
     });
 
+    testWidgets('blames restaurants that only post an image', (tester) async {
+      await pumpApp(
+        tester,
+        menus: buildMenus(
+          restaurants: [
+            buildRestaurant(
+              'd',
+              status: MenuStatus.imageOnly,
+              name: 'Nordic Taste Lab',
+            ),
+          ],
+        ),
+      );
+
+      expect(
+        find.text(
+          'Nordic Taste Lab only posts its menu as a picture, so we can\'t '
+          'show it here. Blame them, not us.',
+        ),
+        findsOneWidget,
+      );
+      expect(find.text('Open website'), findsOneWidget);
+    });
+
     testWidgets('pull-to-refresh reloads the menus', (tester) async {
       await pumpApp(tester);
 

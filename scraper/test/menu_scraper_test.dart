@@ -24,14 +24,15 @@ class _FakeParser implements MenuParser {
   }
 }
 
-RestaurantConfig _config(String id, Object result, {String? name}) =>
+/// A [result] of null makes a restaurant whose menu is only an image.
+RestaurantConfig _config(String id, Object? result, {String? name}) =>
     RestaurantConfig(
       id: id,
       name: name ?? 'Restaurant $id',
       website: LocalizedText(sv: 'https://$id.example'),
       address: 'Street 1',
       lunchHours: '11–13',
-      parser: _FakeParser(result),
+      parser: result == null ? null : _FakeParser(result),
     );
 
 ScrapedMenu _scraped(int week) => ScrapedMenu(
@@ -103,6 +104,13 @@ void main() {
       );
     },
   );
+
+  test('an image-only menu is not scraped', () async {
+    final restaurant = _only(await _run([_config('a', null)]));
+
+    expect(restaurant.status, MenuStatus.imageOnly);
+    expect(restaurant.days, isEmpty);
+  });
 
   test('on Sunday it targets next week', () async {
     final menus = await _run([
@@ -207,6 +215,17 @@ void main() {
       );
 
       expect((config.parser as _FakeParser).calls, 1);
+    });
+
+    test('does not keep a menu that is now image-only', () async {
+      final restaurant = _only(
+        await _run([
+          _config('a', null),
+        ], previous: await previousWith(MenuStatus.ok)),
+      );
+
+      expect(restaurant.status, MenuStatus.imageOnly);
+      expect(restaurant.days, isEmpty);
     });
 
     test('drops restaurants no longer in the config', () async {

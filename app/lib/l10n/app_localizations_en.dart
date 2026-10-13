@@ -39,6 +39,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuError => 'Couldn\'t read this restaurant\'s menu.';
 
   @override
+  String menuImageOnly(String restaurant) {
+    return '$restaurant only posts its menu as a picture, so we can\'t show it here. Blame them, not us.';
+  }
+
+  @override
   String get openWebsite => 'Open website';
 
   @override

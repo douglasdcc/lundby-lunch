@@ -39,6 +39,11 @@ class AppLocalizationsSv extends AppLocalizations {
   String get menuError => 'Kunde inte läsa restaurangens meny.';
 
   @override
+  String menuImageOnly(String restaurant) {
+    return '$restaurant lägger bara upp menyn som en bild, så vi kan inte visa den här. Skyll på dem, inte oss.';
+  }
+
+  @override
   String get openWebsite => 'Öppna webbplats';
 
   @override

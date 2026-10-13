@@ -63,6 +63,11 @@ void main() {
     expect(_sample(secondStatus: MenuStatus.missing).isComplete, isFalse);
   });
 
+  test('isComplete counts a menu only published as an image', () {
+    expect(_sample(secondStatus: MenuStatus.imageOnly).isComplete, isTrue);
+    expect(MenuStatus.parse('imageOnly'), MenuStatus.imageOnly);
+  });
+
   test('dishesOn matches the calendar day regardless of time', () {
     final restaurant = _sample().restaurants.first;
     expect(restaurant.dishesOn(DateTime(2026, 10, 5, 12, 30)), hasLength(1));
