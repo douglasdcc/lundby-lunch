@@ -9,6 +9,7 @@
   "noMenuForDay": "Ingen meny för den här dagen.",
   "menuMissing": "Veckans meny är inte publicerad än.",
   "menuError": "Kunde inte läsa restaurangens meny.",
+  "menuImageOnly": "{restaurant} lägger bara upp menyn som en bild, så vi kan inte visa den här. Skyll på dem, inte oss.",
   "openWebsite": "Öppna webbplats",
   "staleWeek": "Visar vecka {shown}. Menyerna för vecka {target} är inte publicerade än.",
   "loadErrorTitle": "Kunde inte hämta menyerna",

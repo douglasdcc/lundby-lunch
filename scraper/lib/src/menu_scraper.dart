@@ -8,7 +8,8 @@ import 'scraped_menu.dart';
 
 /// Builds `menus.json` for the target week. Every restaurant is scraped
 /// again; a menu already found for the week is kept when the new scrape
-/// fails or finds none.
+/// fails or finds none. Restaurants whose menu is only an image are not
+/// scraped.
 class MenuScraper {
   MenuScraper({
     required this.restaurants,
@@ -41,7 +42,7 @@ class MenuScraper {
       final existing = kept[config.id];
       if (existing == null || existing.status != MenuStatus.ok) {
         menus.add(scraped);
-      } else if (scraped.status != MenuStatus.ok) {
+      } else if (scraped.status case MenuStatus.missing || MenuStatus.error) {
         _log('${config.id}: kept the previous menu');
         menus.add(
           _build(
@@ -79,9 +80,15 @@ class MenuScraper {
     IsoWeek target,
     DateTime now,
   ) async {
+    final parser = config.parser;
+    if (parser == null) {
+      _log('${config.id}: menu is only an image');
+      return _build(config, MenuStatus.imageOnly, const [], const [], null);
+    }
+
     final ScrapedMenu scraped;
     try {
-      scraped = await config.parser.scrape(fetcher, target);
+      scraped = await parser.scrape(fetcher, target);
     } on Exception catch (error) {
       _log('${config.id}: error: $error');
       return _build(config, MenuStatus.error, const [], const [], null);

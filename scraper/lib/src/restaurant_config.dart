@@ -10,7 +10,7 @@ final class RestaurantConfig {
     required this.id,
     required this.name,
     required this.website,
-    required this.parser,
+    this.parser,
     this.address,
     this.lunchHours,
   });
@@ -24,7 +24,10 @@ final class RestaurantConfig {
         website: LocalizedText.fromJson(json['website'] as JsonMap),
         address: json['address'] as String?,
         lunchHours: json['lunchHours'] as String?,
-        parser: MenuParser.fromSource(json['source'] as JsonMap),
+        parser: switch (json['source'] as JsonMap) {
+          {'type': 'image'} => null,
+          final source => MenuParser.fromSource(source),
+        },
       );
     } on TypeError catch (error) {
       throw FormatException('Invalid restaurant entry $json: $error');
@@ -52,5 +55,7 @@ final class RestaurantConfig {
   final LocalizedText website;
   final String? address;
   final String? lunchHours;
-  final MenuParser parser;
+
+  /// Null when the menu is only published as an image, which can't be read.
+  final MenuParser? parser;
 }

@@ -152,6 +152,12 @@ abstract class AppLocalizations {
   /// **'Couldn\'t read this restaurant\'s menu.'**
   String get menuError;
 
+  /// No description provided for @menuImageOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'{restaurant} only posts its menu as a picture, so we can\'t show it here. Blame them, not us.'**
+  String menuImageOnly(String restaurant);
+
   /// No description provided for @openWebsite.
   ///
   /// In en, this message translates to:

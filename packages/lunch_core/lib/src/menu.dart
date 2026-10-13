@@ -71,7 +71,11 @@ enum MenuStatus {
   missing,
 
   /// Scraping failed.
-  error;
+  error,
+
+  /// The restaurant only publishes its menu in a form that can't be read,
+  /// such as an image, so only its website is shown.
+  imageOnly;
 
   static MenuStatus parse(String? value) =>
       values.firstWhere((status) => status.name == value, orElse: () => error);
@@ -181,9 +185,14 @@ final class WeekMenus {
   final DateTime generatedAt;
   final List<RestaurantMenu> restaurants;
 
-  /// Whether every restaurant has its menu for the week.
-  bool get isComplete =>
-      restaurants.every((restaurant) => restaurant.status == MenuStatus.ok);
+  /// Whether every restaurant has its menu for the week, or never has one
+  /// that can be read.
+  bool get isComplete => restaurants.every(
+    (restaurant) => switch (restaurant.status) {
+      MenuStatus.ok || MenuStatus.imageOnly => true,
+      MenuStatus.missing || MenuStatus.error => false,
+    },
+  );
 
   JsonMap toJson() => {
     'schemaVersion': schemaVersion,

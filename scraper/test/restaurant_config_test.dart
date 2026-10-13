@@ -21,7 +21,7 @@ void main() {
         MashieParser,
         SpiraParser,
         BarCentroParser,
-        CompassApiParser,
+        Null, // Nordic Taste Lab only publishes its menu as an image.
       ],
     );
     for (final restaurant in restaurants) {
@@ -39,6 +39,13 @@ void main() {
     'name': 'A',
     'website': {'sv': 'https://a.example'},
     'source': source,
+  });
+
+  test('an image source has no parser', () {
+    final restaurant = RestaurantConfig.decodeList(
+      '[${entry({'type': 'image'})}]',
+    ).single;
+    expect(restaurant.parser, isNull);
   });
 
   test('rejects an unknown source type', () {

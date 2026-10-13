@@ -12,6 +12,10 @@
   "noMenuForDay": "No menu for this day.",
   "menuMissing": "This week's menu isn't published yet.",
   "menuError": "Couldn't read this restaurant's menu.",
+  "menuImageOnly": "{restaurant} only posts its menu as a picture, so we can't show it here. Blame them, not us.",
+  "@menuImageOnly": {
+    "placeholders": { "restaurant": { "type": "String" } }
+  },
   "openWebsite": "Open website",
   "staleWeek": "Showing week {shown}. The menus for week {target} aren't published yet.",
   "@staleWeek": {

@@ -34,6 +34,10 @@ class RestaurantDayCard extends StatelessWidget {
         message: l10n.menuError,
         restaurant: restaurant,
       ),
+      MenuStatus.imageOnly => _Unavailable(
+        message: l10n.menuImageOnly(restaurant.name),
+        restaurant: restaurant,
+      ),
       MenuStatus.ok when dishes.isEmpty && restaurant.weekly.isEmpty =>
         _Unavailable(message: l10n.noMenuForDay, restaurant: restaurant),
       MenuStatus.ok => Column(
