@@ -17,7 +17,7 @@ class RestaurantDayCard extends StatelessWidget {
   final RestaurantMenu restaurant;
   final DateTime date;
 
-  /// Shows the address and a website link in the header.
+  /// Shows the address in the header.
   final bool showDetails;
 
   @override
@@ -26,20 +26,11 @@ class RestaurantDayCard extends StatelessWidget {
     final dishes = restaurant.dishesOn(date);
 
     final Widget content = switch (restaurant.status) {
-      MenuStatus.missing => _Unavailable(
-        message: l10n.menuMissing,
-        restaurant: restaurant,
-      ),
-      MenuStatus.error => _Unavailable(
-        message: l10n.menuError,
-        restaurant: restaurant,
-      ),
-      MenuStatus.imageOnly => _Unavailable(
-        message: l10n.menuImageOnly(restaurant.name),
-        restaurant: restaurant,
-      ),
+      MenuStatus.missing => _Unavailable(l10n.menuMissing),
+      MenuStatus.error => _Unavailable(l10n.menuError),
+      MenuStatus.imageOnly => _Unavailable(l10n.menuImageOnly(restaurant.name)),
       MenuStatus.ok when dishes.isEmpty && restaurant.weekly.isEmpty =>
-        _Unavailable(message: l10n.noMenuForDay, restaurant: restaurant),
+        _Unavailable(l10n.noMenuForDay),
       MenuStatus.ok => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -94,11 +85,10 @@ class _Header extends StatelessWidget {
                 color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
-          if (showDetails)
-            Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: OpenWebsiteButton(restaurant: restaurant),
-            ),
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: OpenWebsiteButton(restaurant: restaurant),
+          ),
         ],
       ),
     );
@@ -133,27 +123,20 @@ class _SectionLabel extends StatelessWidget {
 }
 
 class _Unavailable extends StatelessWidget {
-  const _Unavailable({required this.message, required this.restaurant});
+  const _Unavailable(this.message);
 
   final String message;
-  final RestaurantMenu restaurant;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 4, 8, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            message,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
-          OpenWebsiteButton(restaurant: restaurant),
-        ],
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+      child: Text(
+        message,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
       ),
     );
   }

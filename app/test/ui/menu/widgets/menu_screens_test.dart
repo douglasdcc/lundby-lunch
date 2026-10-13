@@ -14,6 +14,7 @@ void main() {
       expect(find.text('a 3 en'), findsOneWidget);
       expect(find.text('b 3 en'), findsOneWidget);
       expect(find.text('103 kr'), findsNWidgets(2));
+      expect(find.text('Open website'), findsNWidgets(2));
     });
 
     testWidgets('switches day with the day selector', (tester) async {
