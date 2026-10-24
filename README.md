@@ -49,7 +49,8 @@ dart run bin/scrape.dart --output menus.json [--previous old-menus.json]
 
 To add a restaurant, add an entry to `restaurants.json`. Supported `source`
 types: `roots`, `spira`, `barcentro`, `mashie` (Mashie / Matilda Platform menu
-pages) and `compass` (Compass Group menu API, by cost center).
+pages), `compass` (Compass Group menu API, by cost center) and `divan` (a PDF
+menu; needs `pdftotext` from poppler-utils on the PATH).
 
 ## Checks
 

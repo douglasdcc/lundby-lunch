@@ -19,6 +19,7 @@ void main() {
         'barcentro',
         'nordic-taste-lab',
         'lilla-kathmandu',
+        'divan',
       ],
     );
     expect(
@@ -30,6 +31,7 @@ void main() {
         BarCentroParser,
         Null, // Nordic Taste Lab only publishes its menu as an image.
         LillaKathmanduParser,
+        DivanParser,
       ],
     );
     for (final restaurant in restaurants) {

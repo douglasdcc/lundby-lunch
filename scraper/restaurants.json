@@ -76,5 +76,16 @@
       "type": "lillakathmandu",
       "url": "https://www.lillakathmandu.se/sv/lunch"
     }
+  },
+  {
+    "id": "divan",
+    "name": "Divan",
+    "website": {
+      "sv": "https://www.restaurangdivan.se/"
+    },
+    "source": {
+      "type": "divan",
+      "url": "https://www.restaurangdivan.se/lunch/lunch.pdf"
+    }
   }
 ]

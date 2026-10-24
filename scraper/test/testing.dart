@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:lunch_scraper/lunch_scraper.dart';
@@ -18,4 +19,7 @@ class FakeFetcher implements Fetcher {
     if (body == null) throw FetchException('No fake response for $uri');
     return body;
   }
+
+  @override
+  Future<List<int>> getBytes(Uri uri) async => utf8.encode(await get(uri));
 }
