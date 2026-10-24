@@ -9,8 +9,10 @@ on:
     # hour, so runs use odd minutes and repeat often where timing matters.
     # Runs without menu changes don't deploy.
     - cron: '37 15,19 * * 0'        # Sunday: next week's menus
-    - cron: '7,27,47 4-8 * * 1'     # Monday 06:07-10:47 summer / 05:07-09:47 winter: ready before 10:00
-    - cron: '17 10,12 * * 1'        # Monday: late menus
+    # Monday runs fire at both possible UTC hours; the "gate" job lets only the
+    # one matching the wanted Stockholm hour through (cron can't follow DST).
+    - cron: '7 6,7 * * 1'           # Monday 08:07 local: first run
+    - cron: '7 9,10 * * 1'          # Monday 11:07 local: late menus
     - cron: '17 5,7 * * 2-5'        # Tuesday to Friday: late or updated menus
   workflow_dispatch:
 
@@ -27,7 +29,29 @@ env:
   SITE_URL: https://douglasdcc.github.io/lundby-lunch
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        run: |
+          case "${{ github.event.schedule }}" in
+            '7 6,7 * * 1') want=08 ;;
+            '7 9,10 * * 1') want=11 ;;
+            *) want= ;;
+          esac
+          now=$(TZ=Europe/Stockholm date +%H)
+          if [ -n "$want" ] && [ "$now" != "$want" ]; then
+            echo "Stockholm hour is $now, wanted $want: skipping"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     outputs:
       deploy: ${{ steps.compare.outputs.deploy }}
