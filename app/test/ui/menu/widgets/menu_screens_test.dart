@@ -87,6 +87,27 @@ void main() {
       handle.dispose();
     });
 
+    testWidgets('shows the menu notes as printed', (tester) async {
+      await pumpApp(
+        tester,
+        menus: buildMenus(
+          restaurants: [
+            RestaurantMenu(
+              id: 'divan',
+              name: 'Divan',
+              website: const LocalizedText(sv: 'https://divan.example'),
+              status: MenuStatus.ok,
+              notes: const LocalizedText(sv: 'INKL: Salladsbuffé, kaffe'),
+              weekly: const [Dish(name: LocalizedText(sv: 'Kebab'))],
+            ),
+          ],
+        ),
+      );
+
+      expect(find.text('Kebab'), findsOneWidget);
+      expect(find.text('INKL: Salladsbuffé, kaffe'), findsOneWidget);
+    });
+
     testWidgets('blames restaurants that only post an image', (tester) async {
       await pumpApp(
         tester,

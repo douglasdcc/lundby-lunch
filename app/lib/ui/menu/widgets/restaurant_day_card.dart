@@ -24,6 +24,7 @@ class RestaurantDayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final dishes = restaurant.dishesOn(date);
+    final notes = restaurant.notes?.resolve(context.language);
 
     final Widget content = switch (restaurant.status) {
       MenuStatus.missing => _Unavailable(l10n.menuMissing),
@@ -39,6 +40,7 @@ class RestaurantDayCard extends StatelessWidget {
             _SectionLabel(l10n.allWeek),
             for (final dish in restaurant.weekly) DishTile(dish: dish),
           ],
+          if (notes != null) _Notes(notes),
         ],
       ),
     };
@@ -117,6 +119,26 @@ class _SectionLabel extends StatelessWidget {
           const SizedBox(width: 8),
           const Expanded(child: Divider()),
         ],
+      ),
+    );
+  }
+}
+
+class _Notes extends StatelessWidget {
+  const _Notes(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+      child: Text(
+        text,
+        style: theme.textTheme.bodySmall?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
       ),
     );
   }

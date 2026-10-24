@@ -15,6 +15,7 @@ WeekMenus _sample({MenuStatus secondStatus = MenuStatus.ok}) => WeekMenus(
       status: MenuStatus.ok,
       address: 'Prästvägen 12',
       lunchHours: '11:00–13:15',
+      notes: const LocalizedText(sv: 'Inkl. kaffe', en: 'Incl. coffee'),
       fetchedAt: DateTime.utc(2026, 10, 5, 6),
       days: [
         DayMenu(
@@ -61,6 +62,8 @@ void main() {
       decoded.restaurants.first.days.first.date,
       DateTime.utc(2026, 10, 5),
     );
+    expect(decoded.restaurants.first.notes?.en, 'Incl. coffee');
+    expect(decoded.restaurants.last.notes, isNull);
   });
 
   test('isComplete is false when any restaurant is not ok', () {

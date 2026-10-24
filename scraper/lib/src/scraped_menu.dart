@@ -14,12 +14,16 @@ final class ScrapedMenu {
     required this.week,
     this.days = const [],
     this.weekly = const [],
+    this.notes,
   });
 
   /// The week number printed on the page, if any.
   final int? week;
   final List<ScrapedDay> days;
   final List<Dish> weekly;
+
+  /// Text printed with the menu that is not a dish.
+  final LocalizedText? notes;
 
   bool get hasDishes =>
       days.any((day) => day.dishes.isNotEmpty) || weekly.isNotEmpty;
@@ -54,6 +58,7 @@ ScrapedMenu mergeLanguages({
         ),
     ],
     weekly: mergeDishes(sv.weekly, en.weekly),
+    notes: _merge(sv.notes, en.notes),
   );
 }
 

@@ -7,8 +7,8 @@ import '../text.dart';
 import 'menu_parser.dart';
 
 /// Divan: a PDF with "LUNCHMENY V43", numbered dishes served all week at
-/// one price ("Pris: 159: -") and a "VECKANSKÖTT: ... 289: -" line.
-/// Swedish only.
+/// one price ("Pris: 159: -"), a "VECKANSKÖTT: ... 289: -" line and an
+/// "INKL: ..." line saying what the price includes. Swedish only.
 class DivanParser implements MenuParser {
   DivanParser(this.url, {this._pdfToText = runPdfToText});
 
@@ -28,6 +28,10 @@ final _weeklySpecial = RegExp(
   caseSensitive: false,
 );
 final _price = RegExp(r'\bPris:\s*(\d+)', caseSensitive: false);
+final _includes = RegExp(
+  r'^(INKL:.*?)(?:\s*\bPris:.*)?$',
+  caseSensitive: false,
+);
 
 /// Reads the text of Divan's lunch PDF.
 ScrapedMenu parseDivanMenu(String text) {
@@ -38,6 +42,7 @@ ScrapedMenu parseDivanMenu(String text) {
 
   final names = <String>[];
   Dish? special;
+  String? includes;
   int? price;
   for (final line in lines) {
     price ??= findPrice(_price.firstMatch(line)?.group(1));
@@ -50,6 +55,8 @@ ScrapedMenu parseDivanMenu(String text) {
         category: 'Veckans ${match.group(1)!.trim().toLowerCase()}',
         price: findPrice(match.group(3)),
       );
+    } else if (_includes.firstMatch(line) case final match?) {
+      includes = match.group(1);
     } else if (names.isNotEmpty &&
         special == null &&
         line.startsWith(RegExp('[a-zåäö]'))) {
@@ -67,5 +74,6 @@ ScrapedMenu parseDivanMenu(String text) {
       for (final name in names) dishIn(Language.sv, name, price: price),
       ?special,
     ],
+    notes: includes == null ? null : LocalizedText(sv: includes),
   );
 }

@@ -35,8 +35,9 @@ RestaurantConfig _config(String id, Object? result, {String? name}) =>
       parser: result == null ? null : _FakeParser(result),
     );
 
-ScrapedMenu _scraped(int week) => ScrapedMenu(
+ScrapedMenu _scraped(int week, {String notes = 'Inkl. kaffe'}) => ScrapedMenu(
   week: week,
+  notes: LocalizedText(sv: notes),
   days: [
     ScrapedDay(1, [dishIn(Language.sv, 'Måndagsrätt')]),
     const ScrapedDay(2, []),
@@ -74,6 +75,7 @@ void main() {
     expect(restaurant.weekly.single.name.sv, 'Veckans soppa');
     expect(restaurant.address, 'Street 1');
     expect(restaurant.lunchHours, '11–13');
+    expect(restaurant.notes?.sv, 'Inkl. kaffe');
   });
 
   test('a page still showing last week is missing', () async {
@@ -131,6 +133,7 @@ void main() {
         name: 'Old name',
         website: const LocalizedText(sv: 'https://old.example'),
         status: status,
+        notes: const LocalizedText(sv: 'Sparad notis'),
         fetchedAt: DateTime.utc(2026, 10, 12, 5),
         days: [
           DayMenu(
@@ -172,6 +175,22 @@ void main() {
       expect(restaurant.fetchedAt, _monday.toUtc());
     });
 
+    test('a changed note counts as a new menu', () async {
+      final first = await _run([_config('a', _scraped(42))]);
+      final later = _monday.add(const Duration(hours: 2));
+
+      final restaurant = _only(
+        await _run(
+          [_config('a', _scraped(42, notes: 'Inkl. dessert'))],
+          previous: first,
+          now: later,
+        ),
+      );
+
+      expect(restaurant.notes?.sv, 'Inkl. dessert');
+      expect(restaurant.fetchedAt, later.toUtc());
+    });
+
     for (final (outcome, result) in [
       ('missing', _scraped(41)),
       ('failing', const FetchException('HTTP 500')),
@@ -185,6 +204,7 @@ void main() {
 
         expect(restaurant.status, MenuStatus.ok);
         expect(restaurant.days.single.dishes.single.name.sv, 'Sparad rätt');
+        expect(restaurant.notes?.sv, 'Sparad notis');
         expect(restaurant.fetchedAt, DateTime.utc(2026, 10, 12, 5));
         // Names and links always come from the current config.
         expect(restaurant.name, 'New name');
