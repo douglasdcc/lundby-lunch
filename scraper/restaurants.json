@@ -88,5 +88,18 @@
       "type": "divan",
       "url": "https://www.restaurangdivan.se/lunch/lunch.pdf"
     }
+  },
+  {
+    "id": "masala-zone",
+    "name": "Masala Zone",
+    "website": {
+      "sv": "https://www.masalazone.se/indisk-restaurang-masala-zone-hisingen/"
+    },
+    "address": "Gropegårdsgatan 3",
+    "lunchHours": "10:45–14:00",
+    "source": {
+      "type": "masalazone",
+      "url": "https://www.masalazone.se/indisk-restaurang-masala-zone-hisingen/"
+    }
   }
 ]
