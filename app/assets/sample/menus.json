@@ -550,6 +550,244 @@
       "status": "missing",
       "days": [],
       "weekly": []
+    },
+    {
+      "id": "lilla-kathmandu",
+      "name": "Lilla Kathmandu",
+      "website": {
+        "sv": "https://www.lillakathmandu.se/sv/lunch"
+      },
+      "status": "ok",
+      "address": "Byalagsgatan 13",
+      "fetchedAt": "2026-10-05T06:00:00.000Z",
+      "days": [
+        {
+          "date": "2026-10-05",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Butter Chicken"
+              },
+              "description": {
+                "sv": "Tandoori marinerade kycklingfilébitar i en krämig sås av smör och russin."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Lamm Achari"
+              },
+              "description": {
+                "sv": "Stark lammgryta med chili pickles, färsk ingefära och koriander."
+              },
+              "price": 115,
+              "spice": "hot"
+            },
+            {
+              "name": {
+                "sv": "Palak Paneer"
+              },
+              "description": {
+                "sv": "Lättbrynt hemgjord färskost tillredd med spenat, kummin och ingefära."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Chicken Piri Piri"
+              },
+              "description": {
+                "sv": "Grillad kycklingfilé marinerad i vitlök, ingefära och sambal masala. Serveras med tandoorisås."
+              },
+              "price": 115,
+              "spice": "medium"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-06",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Chicken Madras"
+              },
+              "description": {
+                "sv": "Kycklingfilé tillagad i en stark tamarind- och kokossås. Smaksatt med färska curryblad och koriander."
+              },
+              "price": 115,
+              "spice": "hot"
+            },
+            {
+              "name": {
+                "sv": "Pork Makhani"
+              },
+              "description": {
+                "sv": "Små bitar av fläskfilé med sås på grädde, vitlök, smör och finmalda sesamfrön."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Aalo Gobi"
+              },
+              "description": {
+                "sv": "Lätt kryddade blomkål, potatisgryta med spiskummin, korianderfrön och ingefära."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Chicken Tikka"
+              },
+              "description": {
+                "sv": "Kycklingfilé marinerad i lime, yoghurt och tandoori masala. Serveras med tandoorisås."
+              },
+              "price": 115,
+              "spice": "medium"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Chicken Vindaloo"
+              },
+              "description": {
+                "sv": "Eldig kycklingfilé med färsk koriander, palmvinäger, nejlikor och piri-piri masala."
+              },
+              "price": 115,
+              "spice": "hot"
+            },
+            {
+              "name": {
+                "sv": "Keema Matar"
+              },
+              "description": {
+                "sv": "Lammfärsgryta tillagad med ärtor, grön chili, lök, tomat och koriander."
+              },
+              "price": 115,
+              "spice": "medium"
+            },
+            {
+              "name": {
+                "sv": "Chana Saag"
+              },
+              "description": {
+                "sv": "Kikärtsgryta tillsammans med spenat, potatis, koriander, gurkmeja, tomat, röd lök och szechuanepeppar."
+              },
+              "price": 115,
+              "spice": "medium"
+            },
+            {
+              "name": {
+                "sv": "Malai Tikka"
+              },
+              "description": {
+                "sv": "Kycklingfilé marinerad i krämig sås, vitlökspulver och garam masala. Serveras med tandoorisås."
+              },
+              "price": 115,
+              "spice": "mild"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Chicken Hara Masala"
+              },
+              "description": {
+                "sv": "Kycklingfilé med spenat, chili och kryddor."
+              },
+              "price": 115,
+              "spice": "hot"
+            },
+            {
+              "name": {
+                "sv": "Pork Achari"
+              },
+              "description": {
+                "sv": "Fläskfilé med chili pickles, koriander och kokosmjölk."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Veg Makhani"
+              },
+              "description": {
+                "sv": "Blandande grönsaker med mild krämig sås."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Lemon Tikka"
+              },
+              "description": {
+                "sv": "Kycklingfilé marinerad i lime, senapsfrön och vitlök. Serveras med tandoorisås."
+              },
+              "price": 115,
+              "spice": "mild"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "dishes": [
+            {
+              "name": {
+                "sv": "Kathmandu Special"
+              },
+              "description": {
+                "sv": "Kycklingfilé tillagad med spansk chili, ingefära, vitlök, smaksatt med basilikasås."
+              },
+              "price": 115,
+              "spice": "hot"
+            },
+            {
+              "name": {
+                "sv": "Lamm Rogan"
+              },
+              "description": {
+                "sv": "Lammgryta med yoghurt, saffran, tomat, ingefära och koriander toppade med mandel."
+              },
+              "price": 115,
+              "spice": "mild"
+            },
+            {
+              "name": {
+                "sv": "Garlic Tofu Tikka"
+              },
+              "description": {
+                "sv": "Färsk tofu marinerad med vitlök, kryddor och gurkmeja serveras med krämig sås."
+              },
+              "price": 115,
+              "spice": "medium"
+            },
+            {
+              "name": {
+                "sv": "Tandoori Chicken"
+              },
+              "description": {
+                "sv": "Kycklinglår marinerad i lime, vitlök, chili och yoghurt. Serveras med tandoorisås."
+              },
+              "price": 115,
+              "spice": "medium"
+            }
+          ]
+        }
+      ],
+      "weekly": []
     }
   ]
 }

@@ -36,6 +36,9 @@
   "@price": {
     "placeholders": { "price": { "type": "int" } }
   },
+  "spiceMild": "Mild",
+  "spiceMedium": "Medium spicy",
+  "spiceHot": "Hot",
   "allRestaurantsHidden": "All restaurants are hidden. Turn them on in Settings.",
   "settingsLanguage": "Language",
   "settingsTheme": "Theme",

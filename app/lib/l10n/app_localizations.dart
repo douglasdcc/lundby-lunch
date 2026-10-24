@@ -206,6 +206,24 @@ abstract class AppLocalizations {
   /// **'{price} kr'**
   String price(int price);
 
+  /// No description provided for @spiceMild.
+  ///
+  /// In en, this message translates to:
+  /// **'Mild'**
+  String get spiceMild;
+
+  /// No description provided for @spiceMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium spicy'**
+  String get spiceMedium;
+
+  /// No description provided for @spiceHot.
+  ///
+  /// In en, this message translates to:
+  /// **'Hot'**
+  String get spiceHot;
+
   /// No description provided for @allRestaurantsHidden.
   ///
   /// In en, this message translates to:

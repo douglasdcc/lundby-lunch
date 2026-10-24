@@ -64,5 +64,17 @@
     "source": {
       "type": "image"
     }
+  },
+  {
+    "id": "lilla-kathmandu",
+    "name": "Lilla Kathmandu",
+    "website": {
+      "sv": "https://www.lillakathmandu.se/sv/lunch"
+    },
+    "address": "Byalagsgatan 13",
+    "source": {
+      "type": "lillakathmandu",
+      "url": "https://www.lillakathmandu.se/sv/lunch"
+    }
   }
 ]

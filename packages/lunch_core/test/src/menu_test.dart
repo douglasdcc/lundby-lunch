@@ -22,7 +22,12 @@ WeekMenus _sample({MenuStatus secondStatus = MenuStatus.ok}) => WeekMenus(
           dishes: const [
             Dish(
               name: LocalizedText(sv: 'Dagens fisk', en: 'Fish of the day'),
+              description: LocalizedText(
+                sv: 'Med potatis',
+                en: 'With potatoes',
+              ),
               price: 115,
+              spice: SpiceLevel.medium,
               tags: ['L'],
             ),
           ],
@@ -72,6 +77,15 @@ void main() {
     final restaurant = _sample().restaurants.first;
     expect(restaurant.dishesOn(DateTime(2026, 10, 5, 12, 30)), hasLength(1));
     expect(restaurant.dishesOn(DateTime(2026, 10, 6)), isEmpty);
+  });
+
+  test('an unknown spice level is read as none', () {
+    final dish = Dish.fromJson({
+      'name': {'sv': 'Curry'},
+      'spice': 'volcanic',
+    });
+    expect(dish.spice, isNull);
+    expect(dish.toJson().containsKey('spice'), isFalse);
   });
 
   test('unknown status is read as error', () {
