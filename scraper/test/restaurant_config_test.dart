@@ -12,7 +12,15 @@ void main() {
 
     expect(
       [for (final r in restaurants) r.id],
-      ['roots', 'zata', 'spira', 'barcentro', 'nordic-taste-lab', 'divan'],
+      [
+        'roots',
+        'zata',
+        'spira',
+        'barcentro',
+        'nordic-taste-lab',
+        'lilla-kathmandu',
+        'divan',
+      ],
     );
     expect(
       [for (final r in restaurants) r.parser.runtimeType],
@@ -22,6 +30,7 @@ void main() {
         SpiraParser,
         BarCentroParser,
         Null, // Nordic Taste Lab only publishes its menu as an image.
+        LillaKathmanduParser,
         DivanParser,
       ],
     );

@@ -74,6 +74,15 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get spiceMild => 'Mild';
+
+  @override
+  String get spiceMedium => 'Mellanstark';
+
+  @override
+  String get spiceHot => 'Stark';
+
+  @override
   String get allRestaurantsHidden =>
       'Alla restauranger är dolda. Slå på dem i Inställningar.';
 

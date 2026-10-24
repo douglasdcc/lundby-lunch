@@ -63,6 +63,26 @@ void main() {
     expect(merged.single.tags, ['G', 'L']);
   });
 
+  test('mergeDishes combines description and spice level', () {
+    final merged = mergeDishes(
+      [dishIn(Language.sv, 'Curry', description: 'Med ris')],
+      [
+        dishIn(
+          Language.en,
+          'Curry',
+          description: 'With rice',
+          spice: SpiceLevel.hot,
+        ),
+      ],
+    );
+
+    expect(merged.single.description?.toJson(), {
+      'sv': 'Med ris',
+      'en': 'With rice',
+    });
+    expect(merged.single.spice, SpiceLevel.hot);
+  });
+
   test('hasDishes is false for an empty menu', () {
     expect(
       const ScrapedMenu(week: 41, days: [ScrapedDay(1, [])]).hasDishes,

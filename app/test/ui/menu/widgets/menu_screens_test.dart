@@ -52,6 +52,41 @@ void main() {
       expect(find.text('Open website'), findsWidgets);
     });
 
+    testWidgets('shows a dish description and its spice level', (tester) async {
+      final handle = tester.ensureSemantics();
+      await pumpApp(
+        tester,
+        menus: buildMenus(
+          restaurants: [
+            RestaurantMenu(
+              id: 'k',
+              name: 'Kathmandu',
+              website: const LocalizedText(sv: 'https://k.example'),
+              status: MenuStatus.ok,
+              weekly: const [
+                Dish(
+                  name: LocalizedText(sv: 'Lamm Achari'),
+                  description: LocalizedText(sv: 'Stark lammgryta'),
+                  spice: SpiceLevel.hot,
+                  tags: ['L'],
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+
+      expect(find.text('Lamm Achari'), findsOneWidget);
+      expect(find.text('Stark lammgryta'), findsOneWidget);
+      expect(find.text('🌶️🌶️🌶️'), findsOneWidget);
+      // Screen readers say the level instead of the emoji's name.
+      final spoken = tester.getSemantics(find.text('🌶️🌶️🌶️')).label;
+      expect(spoken, contains('Hot'));
+      expect(spoken, isNot(contains('🌶')));
+      expect(find.text('L'), findsOneWidget);
+      handle.dispose();
+    });
+
     testWidgets('blames restaurants that only post an image', (tester) async {
       await pumpApp(
         tester,

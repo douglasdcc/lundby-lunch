@@ -3,7 +3,8 @@ import 'package:lunch_core/lunch_core.dart';
 
 import 'package:lundby_lunch/ui/core/localization/l10n_extensions.dart';
 
-/// One dish: optional category, name, diet tags and price.
+/// One dish: optional category, name, description, spice level, diet tags
+/// and price.
 class DishTile extends StatelessWidget {
   const DishTile({super.key, required this.dish});
 
@@ -14,7 +15,9 @@ class DishTile extends StatelessWidget {
     final theme = Theme.of(context);
     final language = context.language;
     final category = dish.category?.resolve(language);
+    final description = dish.description?.resolve(language);
     final price = dish.price;
+    final spice = dish.spice;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -36,13 +39,24 @@ class DishTile extends StatelessWidget {
                   dish.name.resolve(language),
                   style: theme.textTheme.bodyLarge,
                 ),
-                if (dish.tags.isNotEmpty)
+                if (description != null && description.isNotEmpty)
+                  Text(
+                    description,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                if (spice != null || dish.tags.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: Wrap(
                       spacing: 4,
                       runSpacing: 4,
-                      children: [for (final tag in dish.tags) _TagLabel(tag)],
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        if (spice != null) _SpiceLabel(spice),
+                        for (final tag in dish.tags) _TagLabel(tag),
+                      ],
                     ),
                   ),
               ],
@@ -59,6 +73,31 @@ class DishTile extends StatelessWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+/// One chili per level, read out as words by screen readers.
+class _SpiceLabel extends StatelessWidget {
+  const _SpiceLabel(this.spice);
+
+  final SpiceLevel spice;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final (chilies, label) = switch (spice) {
+      SpiceLevel.mild => (1, l10n.spiceMild),
+      SpiceLevel.medium => (2, l10n.spiceMedium),
+      SpiceLevel.hot => (3, l10n.spiceHot),
+    };
+    return Semantics(
+      label: label,
+      excludeSemantics: true,
+      child: Text(
+        '🌶️' * chilies,
+        style: Theme.of(context).textTheme.labelMedium,
       ),
     );
   }
