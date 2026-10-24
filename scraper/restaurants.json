@@ -83,6 +83,7 @@
     "website": {
       "sv": "https://www.restaurangdivan.se/"
     },
+    "lunchHours": "11:00–15:00",
     "source": {
       "type": "divan",
       "url": "https://www.restaurangdivan.se/lunch/lunch.pdf"

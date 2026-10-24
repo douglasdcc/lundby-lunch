@@ -30,6 +30,16 @@ void main() {
     expect(dishes.first.category?.toJson(), {'sv': 'c-sv', 'en': 'c-en'});
   });
 
+  test('mergeLanguages combines notes', () {
+    final merged = mergeLanguages(
+      sv: ScrapedMenu(week: 41, notes: const LocalizedText(sv: 'Inkl. kaffe')),
+      en: ScrapedMenu(week: 41, notes: const LocalizedText(en: 'Incl. coffee')),
+      targetWeek: 41,
+    );
+
+    expect(merged.notes?.toJson(), {'sv': 'Inkl. kaffe', 'en': 'Incl. coffee'});
+  });
+
   test('mergeLanguages keeps unpaired dishes', () {
     final merged = mergeLanguages(
       sv: _menu(Language.sv, 41, ['Soppa', 'Extra']),

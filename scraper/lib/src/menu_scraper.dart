@@ -51,9 +51,10 @@ class MenuScraper {
             existing.days,
             existing.weekly,
             existing.fetchedAt,
+            notes: existing.notes,
           ),
         );
-      } else if (_sameDishes(scraped, existing)) {
+      } else if (_sameMenu(scraped, existing)) {
         // Keeps the file unchanged, so the site is not deployed again.
         menus.add(
           _build(
@@ -62,6 +63,7 @@ class MenuScraper {
             scraped.days,
             scraped.weekly,
             existing.fetchedAt,
+            notes: scraped.notes,
           ),
         );
       } else {
@@ -113,15 +115,23 @@ class MenuScraper {
     _log(
       '${config.id}: ok (${days.length} days, ${scraped.weekly.length} weekly)',
     );
-    return _build(config, MenuStatus.ok, days, scraped.weekly, now.toUtc());
+    return _build(
+      config,
+      MenuStatus.ok,
+      days,
+      scraped.weekly,
+      now.toUtc(),
+      notes: scraped.notes,
+    );
   }
 
-  bool _sameDishes(RestaurantMenu a, RestaurantMenu b) {
-    String dishes(RestaurantMenu menu) => jsonEncode([
+  bool _sameMenu(RestaurantMenu a, RestaurantMenu b) {
+    String content(RestaurantMenu menu) => jsonEncode([
       for (final day in menu.days) day.toJson(),
       for (final dish in menu.weekly) dish.toJson(),
+      menu.notes?.toJson(),
     ]);
-    return dishes(a) == dishes(b);
+    return content(a) == content(b);
   }
 
   RestaurantMenu _build(
@@ -129,14 +139,16 @@ class MenuScraper {
     MenuStatus status,
     List<DayMenu> days,
     List<Dish> weekly,
-    DateTime? fetchedAt,
-  ) => RestaurantMenu(
+    DateTime? fetchedAt, {
+    LocalizedText? notes,
+  }) => RestaurantMenu(
     id: config.id,
     name: config.name,
     website: config.website,
     status: status,
     address: config.address,
     lunchHours: config.lunchHours,
+    notes: notes,
     fetchedAt: fetchedAt,
     days: days,
     weekly: weekly,

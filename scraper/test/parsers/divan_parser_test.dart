@@ -56,6 +56,14 @@ void main() {
       expect(special.price, 289);
     });
 
+    test('reads what the price includes as a note, without the price', () {
+      expect(
+        menu.notes?.sv,
+        'INKL: Salladsbuffé, bröd, smör, dricka, kaffe och dessert',
+      );
+      expect(menu.notes?.en, isNull);
+    });
+
     test('handles Windows line endings', () {
       final crlf = parseDivanMenu(
         fixture('divan.txt').replaceAll('\n', '\r\n'),
@@ -68,6 +76,7 @@ void main() {
       final empty = parseDivanMenu('Stängt för semester');
       expect(empty.week, isNull);
       expect(empty.hasDishes, isFalse);
+      expect(empty.notes, isNull);
     });
   });
 
@@ -105,5 +114,6 @@ void main() {
           dish.name.sv,
       ],
     );
+    expect(menu.notes?.sv, parseDivanMenu(fixture('divan.txt')).notes?.sv);
   }, skip: _hasPdfToText() ? false : 'pdftotext is not installed');
 }

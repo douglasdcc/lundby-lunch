@@ -118,6 +118,7 @@ final class RestaurantMenu {
     required this.status,
     this.address,
     this.lunchHours,
+    this.notes,
     this.fetchedAt,
     this.days = const [],
     this.weekly = const [],
@@ -130,6 +131,10 @@ final class RestaurantMenu {
     status: MenuStatus.parse(json['status'] as String?),
     address: json['address'] as String?,
     lunchHours: json['lunchHours'] as String?,
+    notes: switch (json['notes']) {
+      final JsonMap notes => LocalizedText.fromJson(notes),
+      _ => null,
+    },
     fetchedAt: switch (json['fetchedAt']) {
       final String value => DateTime.parse(value),
       _ => null,
@@ -146,6 +151,10 @@ final class RestaurantMenu {
   final MenuStatus status;
   final String? address;
   final String? lunchHours;
+
+  /// Text printed with the menu that is not a dish, such as what the price
+  /// includes.
+  final LocalizedText? notes;
 
   /// When the menu was last scraped successfully.
   final DateTime? fetchedAt;
@@ -170,6 +179,7 @@ final class RestaurantMenu {
     'status': status.name,
     'address': ?address,
     'lunchHours': ?lunchHours,
+    'notes': ?notes?.toJson(),
     'fetchedAt': ?fetchedAt?.toUtc().toIso8601String(),
     'days': [for (final day in days) day.toJson()],
     'weekly': [for (final dish in weekly) dish.toJson()],
