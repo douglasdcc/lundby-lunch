@@ -6,6 +6,7 @@
       "sv": "https://www.rootsfoodmarket.se/",
       "en": "https://www.rootsfoodmarket.se/?lang=en"
     },
+    "address": "Gropegårdsgatan 2",
     "lunchHours": "11:00–13:30",
     "source": {
       "type": "roots",
@@ -20,6 +21,7 @@
       "sv": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/zata/"
     },
     "address": "Gropegårdsgatan 11",
+    "lunchHours": "11:00–13:30",
     "source": {
       "type": "mashie",
       "url": "https://compass.mashie.matildaplatform.com/public/app/restaurang+z%C3%A4ta/c2b83349?country=se"
@@ -61,6 +63,7 @@
       "en": "https://www.compass-group.se/en/Restaurants-and-menus/ovriga-restauranger/Restaurant-Nordic-Taste-Lab/"
     },
     "address": "Prästvägen 15",
+    "lunchHours": "11:00–13:30",
     "source": {
       "type": "image"
     }
@@ -72,6 +75,7 @@
       "sv": "https://www.lillakathmandu.se/sv/lunch"
     },
     "address": "Byalagsgatan 13",
+    "lunchHours": "11:00–20:00",
     "source": {
       "type": "lillakathmandu",
       "url": "https://www.lillakathmandu.se/sv/lunch"
@@ -83,6 +87,7 @@
     "website": {
       "sv": "https://www.restaurangdivan.se/"
     },
+    "address": "Nordanvindsgatan 2",
     "lunchHours": "11:00–15:00",
     "source": {
       "type": "divan",

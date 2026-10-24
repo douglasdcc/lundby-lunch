@@ -12,16 +12,14 @@ Runs on Android, iOS and the web: <https://douglasdcc.github.io/lundby-lunch/>
 
 | Restaurant | Address | Lunch | Menu read from |
 | --- | --- | --- | --- |
-| [Roots](https://www.rootsfoodmarket.se/) | | 11:00–13:30 | Website (sv and en) |
-| [Z:äta](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/zata/) | Gropegårdsgatan 11 | | Mashie menu page |
+| [Roots](https://www.rootsfoodmarket.se/) | Gropegårdsgatan 2 | 11:00–13:30 | Website (sv and en) |
+| [Z:äta](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/zata/) | Gropegårdsgatan 11 | 11:00–13:30 | Mashie menu page |
 | [Spira](https://spirafood.se/volvo-lunchmeny) | Gropegårdsgatan 10 | 11:00–13:00 | Website |
 | [Bar Centro](https://barcentropavolvo.se/) | Prästvägen 12 | 11:00–13:15 | Website (sv and en) |
-| [Nordic Taste Lab](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/restaurang-nordic-taste-lab/) | Prästvägen 15 | | Not read: the menu is an image on the website |
-| [Lilla Kathmandu](https://www.lillakathmandu.se/sv/lunch) | Byalagsgatan 13 | | Website |
-| [Divan](https://www.restaurangdivan.se/) | | 11:00–15:00 | PDF menu |
+| [Nordic Taste Lab](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/restaurang-nordic-taste-lab/) | Prästvägen 15 | 11:00–13:30 | Not read: the menu is an image on the website |
+| [Lilla Kathmandu](https://www.lillakathmandu.se/sv/lunch) | Byalagsgatan 13 | 11:00–20:00 | Website |
+| [Divan](https://www.restaurangdivan.se/) | Nordanvindsgatan 2 | 11:00–15:00 | PDF menu |
 | [Masala Zone](https://www.masalazone.se/indisk-restaurang-masala-zone-hisingen/) | Gropegårdsgatan 3 | 10:45–14:00 | Website |
-
-Empty cells are not in `scraper/restaurants.json` yet.
 
 ## Layout
 
