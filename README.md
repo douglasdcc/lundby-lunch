@@ -3,6 +3,26 @@
 Weekly lunch menus for the restaurants around Lundby, in Swedish and English.
 Runs on Android, iOS and the web: <https://douglasdcc.github.io/lundby-lunch/>
 
+> **Disclaimer:** This is a hobby project for learning web scraping and
+> Flutter development. It is not affiliated with any of the restaurants.
+> Menus are read automatically from their websites and may be missing,
+> wrong or out of date, so check the restaurant's own website if it matters.
+
+## Restaurants
+
+| Restaurant | Address | Lunch | Menu read from |
+| --- | --- | --- | --- |
+| [Roots](https://www.rootsfoodmarket.se/) | | 11:00–13:30 | Website (sv and en) |
+| [Z:äta](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/zata/) | Gropegårdsgatan 11 | | Mashie menu page |
+| [Spira](https://spirafood.se/volvo-lunchmeny) | Gropegårdsgatan 10 | 11:00–13:00 | Website |
+| [Bar Centro](https://barcentropavolvo.se/) | Prästvägen 12 | 11:00–13:15 | Website (sv and en) |
+| [Nordic Taste Lab](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/restaurang-nordic-taste-lab/) | Prästvägen 15 | | Not read: the menu is an image on the website |
+| [Lilla Kathmandu](https://www.lillakathmandu.se/sv/lunch) | Byalagsgatan 13 | | Website |
+| [Divan](https://www.restaurangdivan.se/) | | 11:00–15:00 | PDF menu |
+| [Masala Zone](https://www.masalazone.se/indisk-restaurang-masala-zone-hisingen/) | Gropegårdsgatan 3 | 10:45–14:00 | Website |
+
+Empty cells are not in `scraper/restaurants.json` yet.
+
 ## Layout
 
 | Path | What |
@@ -48,9 +68,10 @@ dart run bin/scrape.dart --output menus.json [--previous old-menus.json]
 ```
 
 To add a restaurant, add an entry to `restaurants.json`. Supported `source`
-types: `roots`, `spira`, `barcentro`, `mashie` (Mashie / Matilda Platform menu
-pages), `compass` (Compass Group menu API, by cost center) and `divan` (a PDF
-menu; needs `pdftotext` from poppler-utils on the PATH).
+types: `roots`, `spira`, `barcentro`, `lillakathmandu`, `masalazone`, `mashie`
+(Mashie / Matilda Platform menu pages), `compass` (Compass Group menu API, by
+cost center) and `divan` (a PDF menu; needs `pdftotext` from poppler-utils on
+the PATH).
 
 ## Checks
 
