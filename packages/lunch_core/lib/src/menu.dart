@@ -5,21 +5,43 @@ import 'iso_week.dart';
 import 'json.dart';
 import 'localized_text.dart';
 
+/// How spicy a dish is.
+enum SpiceLevel {
+  mild,
+  medium,
+  hot;
+
+  /// Null for an unknown or missing level.
+  static SpiceLevel? tryParse(String? value) {
+    for (final level in values) {
+      if (level.name == value) return level;
+    }
+    return null;
+  }
+}
+
 final class Dish {
   const Dish({
     required this.name,
+    this.description,
     this.category,
     this.price,
+    this.spice,
     this.tags = const [],
   });
 
   factory Dish.fromJson(JsonMap json) => Dish(
     name: LocalizedText.fromJson(json['name'] as JsonMap),
+    description: switch (json['description']) {
+      final JsonMap description => LocalizedText.fromJson(description),
+      _ => null,
+    },
     category: switch (json['category']) {
       final JsonMap category => LocalizedText.fromJson(category),
       _ => null,
     },
     price: json['price'] as int?,
+    spice: SpiceLevel.tryParse(json['spice'] as String?),
     tags: [
       for (final tag in json['tags'] as List<Object?>? ?? const [])
         tag as String,
@@ -28,19 +50,26 @@ final class Dish {
 
   final LocalizedText name;
 
+  /// What the dish is made of, when the restaurant writes it apart from
+  /// the name.
+  final LocalizedText? description;
+
   /// For example "Vegetarian" or "Soup of the week".
   final LocalizedText? category;
 
   /// Price in SEK.
   final int? price;
+  final SpiceLevel? spice;
 
   /// Diet labels as printed by the restaurant, such as `L` or `G`.
   final List<String> tags;
 
   JsonMap toJson() => {
     'name': name.toJson(),
+    'description': ?description?.toJson(),
     'category': ?category?.toJson(),
     'price': ?price,
+    'spice': ?spice?.name,
     if (tags.isNotEmpty) 'tags': tags,
   };
 }

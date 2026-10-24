@@ -67,28 +67,36 @@ List<Dish> mergeDishes(List<Dish> sv, List<Dish> en) => [
     else
       Dish(
         name: LocalizedText(sv: sv[i].name.sv, en: en[i].name.en),
-        category: switch ((sv[i].category, en[i].category)) {
-          (null, null) => null,
-          (final a, final b) => LocalizedText(sv: a?.sv, en: b?.en),
-        },
+        description: _merge(sv[i].description, en[i].description),
+        category: _merge(sv[i].category, en[i].category),
         price: sv[i].price ?? en[i].price,
+        spice: sv[i].spice ?? en[i].spice,
         tags: {...sv[i].tags, ...en[i].tags}.toList(),
       ),
 ];
+
+LocalizedText? _merge(LocalizedText? sv, LocalizedText? en) =>
+    sv == null && en == null ? null : LocalizedText(sv: sv?.sv, en: en?.en);
 
 /// Builds a dish from text in a single [language].
 Dish dishIn(
   Language language,
   String name, {
+  String? description,
   String? category,
   int? price,
+  SpiceLevel? spice,
   List<String> tags = const [],
 }) => Dish(
   name: _text(language, name),
+  description: description == null || description.isEmpty
+      ? null
+      : _text(language, description),
   category: category == null || category.isEmpty
       ? null
       : _text(language, category),
   price: price,
+  spice: spice,
   tags: tags,
 );
 

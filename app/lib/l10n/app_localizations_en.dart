@@ -74,6 +74,15 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get spiceMild => 'Mild';
+
+  @override
+  String get spiceMedium => 'Medium spicy';
+
+  @override
+  String get spiceHot => 'Hot';
+
+  @override
   String get allRestaurantsHidden =>
       'All restaurants are hidden. Turn them on in Settings.';
 
