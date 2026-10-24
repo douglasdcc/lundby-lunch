@@ -2,9 +2,13 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-/// Downloads web pages as text.
+/// Downloads web pages and files.
 abstract interface class Fetcher {
+  /// The body of [uri] as text.
   Future<String> get(Uri uri);
+
+  /// The body of [uri] as raw bytes, for files such as PDFs.
+  Future<List<int>> getBytes(Uri uri);
 }
 
 class FetchException implements Exception {
@@ -25,15 +29,19 @@ class HttpFetcher implements Fetcher {
   final http.Client _client;
 
   @override
-  Future<String> get(Uri uri) async {
+  Future<String> get(Uri uri) async =>
+      // Some pages mix encodings; a stray byte must not fail the whole page.
+      utf8.decode(await getBytes(uri), allowMalformed: true);
+
+  @override
+  Future<List<int>> getBytes(Uri uri) async {
     final response = await _client
         .get(uri, headers: {'User-Agent': userAgent})
         .timeout(const Duration(seconds: 30));
     if (response.statusCode != 200) {
       throw FetchException('HTTP ${response.statusCode} for $uri');
     }
-    // Some pages mix encodings; a stray byte must not fail the whole page.
-    return utf8.decode(response.bodyBytes, allowMalformed: true);
+    return response.bodyBytes;
   }
 
   void close() => _client.close();

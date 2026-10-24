@@ -48,6 +48,9 @@ jobs:
             "$SITE_URL/data/menus.json" --output previous.json \
             || { echo "No published menus yet"; rm -f previous.json; }
 
+      - name: Install pdftotext
+        run: command -v pdftotext || { sudo apt-get update && sudo apt-get install --yes poppler-utils; }
+
       - name: Scrape
         working-directory: scraper
         run: dart run bin/scrape.dart --previous ../previous.json --output ../menus.json

@@ -4,6 +4,7 @@ import '../fetcher.dart';
 import '../scraped_menu.dart';
 import 'bar_centro_parser.dart';
 import 'compass_api_parser.dart';
+import 'divan_parser.dart';
 import 'mashie_parser.dart';
 import 'roots_parser.dart';
 import 'spira_parser.dart';
@@ -28,6 +29,7 @@ abstract interface class MenuParser {
         en: Uri.parse(url('en')),
       ),
       'mashie' => MashieParser(Uri.parse(url('url'))),
+      'divan' => DivanParser(Uri.parse(url('url'))),
       'compass' => switch (source['costCenter']) {
         final String costCenter => CompassApiParser(costCenter),
         _ => throw FormatException(
