@@ -27,6 +27,9 @@ class BarCentroParser implements MenuParser {
 
 final _weekdayItem = RegExp(r'^([^;:]+)[;:]\s*(.+)$');
 
+/// A short label such as "Dagens Sallad;" in front of a weekly special.
+final _label = RegExp(r'^\S+(?:\s+\S+){0,2};\s*(?=\S)');
+
 ScrapedMenu parseBarCentroPage(String page, Language language) {
   final section = html.parse(page).querySelector('article.lunchmenu');
   if (section == null) return const ScrapedMenu(week: null);
@@ -72,7 +75,14 @@ ScrapedMenu parseBarCentroPage(String page, Language language) {
       }
     } else {
       for (final line in lines) {
-        weekly.add(_dish(language, line, category: category, price: price));
+        weekly.add(
+          _dish(
+            language,
+            line.replaceFirst(_label, ''),
+            category: category,
+            price: price,
+          ),
+        );
       }
     }
   }

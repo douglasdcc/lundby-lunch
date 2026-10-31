@@ -9,11 +9,13 @@ on:
     # hour, so runs use odd minutes and repeat often where timing matters.
     # Runs without menu changes don't deploy.
     - cron: '37 15,19 * * 0'        # Sunday: next week's menus
-    # Monday runs fire at both possible UTC hours; the "gate" job lets only the
-    # one matching the wanted Stockholm hour through (cron can't follow DST).
+    # Monday runs fire at both possible UTC hours; the "gate" job drops the one
+    # that starts before the wanted Stockholm hour (cron can't follow DST).
+    # Runs that GitHub starts late still go through.
     - cron: '7 6,7 * * 1'           # Monday 08:07 local: first run
     - cron: '7 9,10 * * 1'          # Monday 11:07 local: late menus
     - cron: '17 5,7 * * 2-5'        # Tuesday to Friday: late or updated menus
+    - cron: '47 12,17 * * 1-5'      # Weekday afternoon and evening: same-day updates
   workflow_dispatch:
 
 permissions:
@@ -42,8 +44,9 @@ jobs:
             *) want= ;;
           esac
           now=$(TZ=Europe/Stockholm date +%H)
-          if [ -n "$want" ] && [ "$now" != "$want" ]; then
-            echo "Stockholm hour is $now, wanted $want: skipping"
+          # 10# reads "08" as decimal, not octal.
+          if [ -n "$want" ] && [ "$((10#$now))" -lt "$((10#$want))" ]; then
+            echo "Stockholm hour is $now, before $want: skipping"
             echo "run=false" >> "$GITHUB_OUTPUT"
           else
             echo "run=true" >> "$GITHUB_OUTPUT"

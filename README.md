@@ -35,8 +35,8 @@ This is a Dart pub workspace: run `flutter pub get` once from the root.
 ## How the menus get to the app
 
 The **Scrape menus and deploy** workflow (`.github/workflows/deploy.yml`) runs
-on Sunday evening, several times on Monday morning, and once a day Tuesday to
-Friday:
+on Sunday evening, several times on Monday morning, every weekday morning,
+and again every weekday afternoon and evening to catch same-day updates:
 
 1. Downloads the `menus.json` currently published on GitHub Pages.
 2. Runs the scraper for the coming week. Restaurants that already have that
