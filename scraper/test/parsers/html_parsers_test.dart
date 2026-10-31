@@ -160,6 +160,24 @@ void main() {
       );
     });
 
+    test('drops a label in front of a weekly special', () {
+      const page = '''
+<article class="section lunchmenu">
+  <header><h6>Vecka 44</h6></header>
+  <article class="section specials">
+    <article class="day">
+      <aside class="price">110</aside>
+      <h4>Veckans Sallad;</h4>
+      <section><p>Dagens Sallad; Pulled pork med äggnudlar, koriander (G)</p></section>
+    </article>
+  </article>
+</article>''';
+      final weekly = parseBarCentroPage(page, Language.sv).weekly;
+      expect(weekly.single.name.sv, 'Pulled pork med äggnudlar, koriander');
+      expect(weekly.single.category?.sv, 'Veckans Sallad');
+      expect(weekly.single.tags, ['G']);
+    });
+
     test('a page without the lunch section has no week', () {
       expect(parseBarCentroPage('<p>Hello</p>', Language.sv).week, isNull);
     });
