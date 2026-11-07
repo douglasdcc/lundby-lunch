@@ -3,6 +3,7 @@ import 'package:lunch_core/lunch_core.dart';
 
 import 'package:lundby_lunch/ui/core/localization/l10n_extensions.dart';
 import 'package:lundby_lunch/ui/core/widgets/dish_tile.dart';
+import 'package:lundby_lunch/ui/core/widgets/open_map_button.dart';
 import 'package:lundby_lunch/ui/core/widgets/open_website_button.dart';
 
 /// A restaurant's dishes for one day, followed by its dishes for the week.
@@ -87,9 +88,12 @@ class _Header extends StatelessWidget {
                 color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
-          Align(
-            alignment: AlignmentDirectional.centerStart,
-            child: OpenWebsiteButton(restaurant: restaurant),
+          Wrap(
+            children: [
+              OpenWebsiteButton(restaurant: restaurant),
+              if (restaurant.address case final address?)
+                OpenMapButton(address: address),
+            ],
           ),
         ],
       ),

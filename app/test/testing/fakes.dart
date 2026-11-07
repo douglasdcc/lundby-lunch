@@ -54,6 +54,7 @@ RestaurantMenu buildRestaurant(
   MenuStatus status = MenuStatus.ok,
   bool withWeekly = false,
   String? name,
+  String? address,
 }) => RestaurantMenu(
   id: id,
   name: name ?? 'Restaurant $id',
@@ -63,6 +64,7 @@ RestaurantMenu buildRestaurant(
   ),
   status: status,
   lunchHours: '11:00–13:30',
+  address: address,
   days: status != MenuStatus.ok
       ? const []
       : [
