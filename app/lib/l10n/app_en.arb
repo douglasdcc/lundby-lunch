@@ -17,6 +17,7 @@
     "placeholders": { "restaurant": { "type": "String" } }
   },
   "openWebsite": "Open website",
+  "openMap": "Open map",
   "staleWeek": "Showing week {shown}. The menus for week {target} aren't published yet.",
   "@staleWeek": {
     "placeholders": {

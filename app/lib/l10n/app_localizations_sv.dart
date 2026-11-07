@@ -47,6 +47,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get openWebsite => 'Öppna webbplats';
 
   @override
+  String get openMap => 'Öppna karta';
+
+  @override
   String staleWeek(int shown, int target) {
     return 'Visar vecka $shown. Menyerna för vecka $target är inte publicerade än.';
   }

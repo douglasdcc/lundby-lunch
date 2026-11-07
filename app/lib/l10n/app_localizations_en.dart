@@ -47,6 +47,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get openWebsite => 'Open website';
 
   @override
+  String get openMap => 'Open map';
+
+  @override
   String staleWeek(int shown, int target) {
     return 'Showing week $shown. The menus for week $target aren\'t published yet.';
   }

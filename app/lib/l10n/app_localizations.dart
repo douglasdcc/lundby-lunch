@@ -164,6 +164,12 @@ abstract class AppLocalizations {
   /// **'Open website'**
   String get openWebsite;
 
+  /// No description provided for @openMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Open map'**
+  String get openMap;
+
   /// No description provided for @staleWeek.
   ///
   /// In en, this message translates to:

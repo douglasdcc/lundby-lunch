@@ -11,6 +11,7 @@
   "menuError": "Kunde inte läsa restaurangens meny.",
   "menuImageOnly": "{restaurant} lägger bara upp menyn som en bild, så vi kan inte visa den här. Skyll på dem, inte oss.",
   "openWebsite": "Öppna webbplats",
+  "openMap": "Öppna karta",
   "staleWeek": "Visar vecka {shown}. Menyerna för vecka {target} är inte publicerade än.",
   "loadErrorTitle": "Kunde inte hämta menyerna",
   "loadErrorMessage": "Kontrollera anslutningen och försök igen.",

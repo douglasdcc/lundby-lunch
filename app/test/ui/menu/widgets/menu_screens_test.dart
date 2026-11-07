@@ -17,6 +17,23 @@ void main() {
       expect(find.text('Open website'), findsNWidgets(2));
     });
 
+    testWidgets('offers a map only for restaurants with an address', (
+      tester,
+    ) async {
+      await pumpApp(
+        tester,
+        menus: buildMenus(
+          restaurants: [
+            buildRestaurant('a', address: 'Street 1'),
+            buildRestaurant('b'),
+          ],
+        ),
+      );
+
+      expect(find.text('Open map'), findsOneWidget);
+      expect(find.text('Open website'), findsNWidgets(2));
+    });
+
     testWidgets('switches day with the day selector', (tester) async {
       await pumpApp(tester);
 
@@ -158,6 +175,19 @@ void main() {
 
       expect(find.text('b 3 en'), findsOneWidget);
       expect(find.text('a 3 en'), findsNothing);
+    });
+
+    testWidgets('offers a map for the selected restaurant', (tester) async {
+      await pumpApp(
+        tester,
+        menus: buildMenus(
+          restaurants: [buildRestaurant('a', address: 'Street 1')],
+        ),
+      );
+      await tester.tap(find.text('Week'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Open map'), findsOneWidget);
     });
 
     testWidgets('keeps the day selected on the Today screen', (tester) async {
